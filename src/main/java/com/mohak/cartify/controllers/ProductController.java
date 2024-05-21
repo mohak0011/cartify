@@ -24,12 +24,15 @@ public class ProductController {
     @GetMapping("/products/{id}")
     public ResponseEntity<ProductDto> getProduct(@PathVariable Long id) {
 
-      return new  ResponseEntity<>((this.productService.getProductById(id)),HttpStatus.OK);
+        ProductDto productDtos = this.productService.getProductById(id);
+      return new  ResponseEntity<>(productDtos,HttpStatus.OK);
     }
 
     @GetMapping("/products")
     public  ResponseEntity<List<ProductDto>> getAllProducts() {
-        return  new ResponseEntity<>((this.productService.getProducts()),HttpStatus.OK);
+
+        List<ProductDto> proudctdtos = this.productService.getProducts();
+        return  new ResponseEntity<>(proudctdtos,HttpStatus.OK);
     }
 
       @PostMapping("/products")
